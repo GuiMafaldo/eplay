@@ -1,21 +1,37 @@
 import ProductsList from '../../components/ProductList'
 import { Games } from '../Home'
 
-// import resident from '../../assets/images/resident.png'
-// import zelda from '../../assets/images/zelda.png'
-// import starwars from '../../assets/images/star_wars.png'
-// import diablo from '../../assets/images/diablo.png'
-const promocoes: Games[] = []
-const emBreve: Games[] = []
+import {
+  useGetActionQuery,
+  useGetEsportsQuery,
+  useGetSimulacaoQuery,
+  useGetLutaQuery,
+  useGetRpgQuery
+} from '../../services/api'
+
 const Categories = () => {
-  return (
-    <>
-      <ProductsList games={promocoes} title="RPG" background="gray" />
-      <ProductsList games={emBreve} title="Ação" background="black" />
-      <ProductsList games={promocoes} title="Aventura" background="gray" />
-      <ProductsList games={emBreve} title="FPS" background="black" />
-    </>
-  )
+  const { data: actionGames } = useGetActionQuery()
+  const { data: sportsGames } = useGetEsportsQuery()
+  const { data: simulacaoGames } = useGetSimulacaoQuery()
+  const { data: lutaGames } = useGetLutaQuery()
+  const { data: rpgGames } = useGetRpgQuery()
+
+  if (actionGames && sportsGames && simulacaoGames && lutaGames && rpgGames) {
+    return (
+      <>
+        <ProductsList games={actionGames} title="Ação" background="black" />
+        <ProductsList games={sportsGames} title="Esportes" background="gray" />
+        <ProductsList
+          games={simulacaoGames}
+          title="Simulaçao"
+          background="black"
+        />
+        <ProductsList games={rpgGames} title="Rpg" background="gray" />
+        <ProductsList games={lutaGames} title="Luta" background="black" />
+      </>
+    )
+  }
+  return <h4>Carregando...</h4>
 }
 
 export default Categories

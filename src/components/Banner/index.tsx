@@ -5,14 +5,11 @@ import { Imagem, Precos, Titulo } from './styles'
 import Button from '../Button'
 import Tag from '../Tag'
 import { formataPreco } from '../ProductList'
-const Banner = () => {
-  const [game, setGame] = useState<Games>()
 
-  useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/eplay/destaque')
-      .then((res) => res.json())
-      .then((res) => setGame(res))
-  }, [])
+import { useGetFeatureGameQuery } from '../../services/api'
+
+const Banner = () => {
+  const { data: game, isLoading } = useGetFeatureGameQuery()
 
   if (!game) {
     return <h3>Carregando...</h3>
@@ -24,13 +21,13 @@ const Banner = () => {
         <div>
           <Titulo>{game.name}</Titulo>
           <Precos>
-            {formataPreco(game.prices.old)} <br />
+            de <span>{formataPreco(game.prices.old)}</span> <br />
             por apenas {formataPreco(game.prices.current)}
           </Precos>
         </div>
         <Button
           type="link"
-          to="/produto"
+          to={`/product/${game.id}`}
           title="Click aqui para aproveitar essa oferta"
         >
           Aproveitar

@@ -46,6 +46,6 @@ export const Precos = styled.p`
 
   span {
     text-decoration: line-through;
-    color: ${cores.cinza};
+    color: ${cores.branca};
   }
 `
