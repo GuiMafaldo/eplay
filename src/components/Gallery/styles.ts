@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Actions = styled.div`
   position: absolute;
@@ -17,19 +17,19 @@ export const Actions = styled.div`
 
 export const GalleryList = styled.ul`
   display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 `
 
 export const GalleryItems = styled.li`
-  margin-right: 16px;
   position: relative;
 
   &:hover {
     cursor: pointer;
-
-    ${Actions} {
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
+  }
+  ${Actions} {
+    opacity: 1;
+    transition: opacity 0.5s ease;
   }
 
   > img {
@@ -94,5 +94,9 @@ export const ModalContent = styled.div`
   iframe {
     width: 100%;
     height: 480px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 90%;
   }
 `

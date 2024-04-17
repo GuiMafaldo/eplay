@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import { Link } from 'react-router-dom'
 
@@ -18,6 +18,12 @@ export const Card = styled(Link)`
   }
   ${TagContainer} {
     margin-right: 8px;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    img {
+      width: 100%;
+    }
   }
 `
 

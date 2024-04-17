@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Imagem = styled.div`
@@ -18,6 +18,14 @@ export const Imagem = styled.div`
     justify-content: space-between;
     align-items: flex-end;
     z-index: 1;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    background-size: cover;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    background-size: cover;
   }
 
   ${TagContainer} {
