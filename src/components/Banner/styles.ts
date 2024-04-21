@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
-export const Imagem = styled.div`
+export const Image = styled.div`
   width: 100%;
   height: 760px;
   display: block;
@@ -10,6 +10,16 @@ export const Imagem = styled.div`
   background-size: cover;
   font-weight: bold;
   position: relative;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 
   .container {
     position: relative;
@@ -32,28 +42,18 @@ export const Imagem = styled.div`
     position: absolute;
     top: 32px;
   }
-
-  &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    color: rgba(0, 0, 0, 0.7);
-    content: '';
-  }
 `
-export const Titulo = styled.h2`
+export const Title = styled.h2`
   font-size: 36px;
   font-weight: bold;
   max-widht: 450px;
 `
-export const Precos = styled.p`
+export const Prices = styled.p`
   font-size: 24px;
   margin-top: 24px;
 
   span {
     text-decoration: line-through;
-    color: ${cores.branca};
+    color: ${colors.white};
   }
 `

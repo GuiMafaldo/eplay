@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { breakpoints, colors } from '../../styles'
 
 export const Actions = styled.div`
   position: absolute;
@@ -23,17 +23,18 @@ export const GalleryList = styled.ul`
 
 export const GalleryItems = styled.li`
   position: relative;
+  cursor: zoom-in;
 
   &:hover {
     cursor: pointer;
-  }
-  ${Actions} {
-    opacity: 1;
-    transition: opacity 0.5s ease;
+    ${Actions} {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
   }
 
   > img {
-    border: 2px solid ${cores.branca};
+    border: 2px solid ${colors.white};
     border-radius: 8px;
     width: 150px;
     height: 150px;
@@ -52,7 +53,7 @@ export const Modal = styled.div`
   align-items: center;
   justify-content: center;
 
-  &.visivel {
+  &.is-visible {
     display: flex;
   }
 
@@ -75,6 +76,12 @@ export const ModalContent = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 24px;
+
+    img {
+      height: 16px;
+      width: 16px;
+      cursor: pointer;
+    }
 
     h4 {
       fon-size: 18px;
